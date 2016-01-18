@@ -1,0 +1,78 @@
+public class ESPGame 
+{ 
+public static void main(String[] args) 
+{
+String random; String guess; 
+Scanner keyboard = new Scanner(System.in); 
+random = computerColor(); 
+guess = guessColor(keyboard); 
+String end = recordGame(random, guess); System.out.println(end); keyboard.close(); 
+}//end of main
+
+public static String computerColor() 
+{ 
+Random rand = new Random(); 
+int color = rand.nextInt(5) + 1; 
+return receiveColor(color); 
+
+}//end of Computercolor class
+public static String receiveColor(int color)
+{ 
+String selection;
+ switch (color) 
+{ case 1: selection = "Red"; 
+break; 
+case 2: selection = "Blue"; 
+break; 
+case 3: selection = "Green"; 
+break; 
+case 4: selection = "Yellow"; 
+break;
+case 5: selection = "Orange"; 
+break; 
+default: System.out.println("Make a valid selection.");
+ selection = null;
+ }// end of switch Color
+return selection; 
+
+public static String guessColor(Scanner keyboard)
+{ 
+System.out.println("Enter a number from 1 to 5 to receive a color.\n 1 is Red\n 2 is Blue\n 3 is Green\n 4 is Yellow\n 5 is Orange\n");
+int GuessColor = keyboard.nextInt();
+String color = receiveColor(GuessColor); 
+while (color == null) 
+{ System.out.println("Enter a number from 1 to 5 to receive a color.\n 1 is Red\n 2 is Blue\n 3 is Green\n 4 is Yellow\n 5 is Orange\n"); 
+int guess = keyboard.nextInt(); 
+color = receiveColor(GuessColor); 
+} 
+return color; 
+} 
+public static String recordGame(String ComputerColor, String GuessColor) {
+ String end; end = "The computer's choice was: " + ComputerColor; end += "Your choice was: " + GuessColor; if(GuessColor.equalsIgnoreCase("Red")) 
+{ 
+if (ComputerColor.equalsIgnoreCase("Red")) 
+{ 
+end += "You guessed correctly!";
+}
+ else 
+{ 
+result += "You guessed incorrectly."; 
+} 
+} 
+else if(GuessColor.equalsIgnoreCase("Blue")) 
+{ 
+if (ComputerColor.equalsIgnoreCase("Blue")) 
+{ 
+end += "You guessed correctly!"; 
+} 
+else 
+{ 
+result += "You guessed incorrectly."; 
+} 
+} 
+else if(GuessColor.equalsIgnoreCase("Green")) 
+{ 
+if (ComputerColor.equalsIgnoreCase("Green")) 
+{ end += "You guessed correctly!"; 
+} 
+else { result += "You guessed incorrectly."; } } else if(GuessColor.equalsIgnoreCase("Yellow")) { if (ComputerColor.equalsIgnoreCase("Yellow")) { end += "You guessed correctly!"; } else { result += "You guessed incorrectly."; } } else if(GuessColor.equalsIgnoreCase("Orange")) { if (ComputerColor.equalsIgnoreCase("Orange")) { end += "You guessed correctly!"; } else { result += "You guessed incorrectly."; } } return end; } }
